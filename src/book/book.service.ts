@@ -18,10 +18,6 @@ export class BookService {
     const checkTitle = await this.bookRepository.findOne({
       where: { title: createBookDto.title },
     });
-    console.log(
-      '🚀 ~ file: book.service.ts:21 ~ BookService ~ create ~ checkTitle:',
-      checkTitle,
-    );
 
     if (checkTitle) {
       throw new HttpException(
