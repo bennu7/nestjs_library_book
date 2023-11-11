@@ -1,0 +1,10 @@
+{
+  "user_id": "123123",
+  "cart_items": [
+    {
+      "cart_id": "1231321",
+      "book_id": "123asd",
+      "quantity": 1
+    }
+  ]
+}
