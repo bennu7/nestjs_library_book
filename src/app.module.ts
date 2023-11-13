@@ -1,13 +1,13 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { BookModule } from './book/book.module';
+import { LoggerHttpMiddleware } from './middleware/logger-http.middleware';
 import { DbModule } from './db/db.module';
-import { UserModule } from './user/user.module';
-import { CartModule } from './cart/cart.module';
-import { OrderModule } from './order/order.module';
+import { BookModule } from './api/book/book.module';
+import { UserModule } from './api/user/user.module';
+import { CartModule } from './api/cart/cart.module';
+import { OrderModule } from './api/order/order.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -19,6 +19,9 @@ import { OrderModule } from './order/order.module';
     OrderModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerHttpMiddleware).forRoutes('*');
+  }
+}

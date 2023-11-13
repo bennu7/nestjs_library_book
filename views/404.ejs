@@ -1,0 +1,10 @@
+<%- include("partials/header.ejs") -%>
+<body
+  class="flex flex-col items-center justify-center w-full min-h-screen bg-zinc-100"
+>
+  <p class="text-4xl text-red-500 mb-4">Status Code : <%= statusCode %></p>
+  <p class="text-xl text-red-500"><%= message %></p>
+  <p class="text-xl text-red-500">path : <%= path %></p>
+  <p class="text-xl text-red-500">timestamp : <%= timestamp %></p>
+</body>
+<%- include("partials/footer.ejs") -%>
